@@ -22,7 +22,6 @@ public class LocationController {
 		result.setStatus(200);
 		result.setValue(location);
 		int id = locationService.addLocation(location);
-		// BaseResult result = new BaseResult();
 		if (id > 0) {
 			result.setStatus(200);
 			result.setValue("插入数据成功！");

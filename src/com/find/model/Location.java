@@ -2,13 +2,11 @@ package com.find.model;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import com.find.dao.Saveable;
-
 public class Location implements Saveable {
 	int id;
 	String longitude;
 	String latitude;
-	String user_tag;
+	String device_id;
 
 	public int getId() {
 		return id;
@@ -34,16 +32,18 @@ public class Location implements Saveable {
 		this.latitude = latitude;
 	}
 
-	public String getUser_tag() {
-		return user_tag;
+
+	public String getDevice_id() {
+		return device_id;
 	}
 
-	public void setUser_tag(String user_tag) {
-		this.user_tag = user_tag;
+	public void setDevice_id(String device_id) {
+		this.device_id = device_id;
 	}
+
 
 	static final String TABLE_NAME = "location";
-	private static String[] keyColumns = { "longitude", "latitude", "user_tag" };
+	private static String[] keyColumns = { "longitude", "latitude", "device_id" };
 
 	@Override
 	@JsonIgnore

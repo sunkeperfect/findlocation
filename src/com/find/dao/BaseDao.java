@@ -1,15 +1,13 @@
 package com.find.dao;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+
+import com.find.model.Saveable;
 
 public class BaseDao extends JdbcDaoSupport {
 
@@ -24,7 +22,7 @@ public class BaseDao extends JdbcDaoSupport {
 		return saveAndReturnKey(objForSave, objForSave.getTableName(),
 				objForSave.getKeyColumns());
 	}
-
+	
 	/**
 	 * 添加实体,返回主键
 	 * 

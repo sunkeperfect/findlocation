@@ -1,41 +1,58 @@
 package com.find.model;
 
-public class UserInfo {
-	String name;
-	String info;
-	int sex;
-	int age;
-	int level;
-	public String getName() {
-		return name;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+public class UserInfo implements Saveable {
+	int id;
+	String username;
+	String password;
+	String device_id;
+
+	public int getId() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getInfo() {
-		return info;
+
+	public String getUsername() {
+		return username;
 	}
-	public void setInfo(String info) {
-		this.info = info;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public int getSex() {
-		return sex;
+
+	public String getPassword() {
+		return password;
 	}
-	public void setSex(int sex) {
-		this.sex = sex;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public int getAge() {
-		return age;
+
+	public String getDevice_id() {
+		return device_id;
 	}
-	public void setAge(int age) {
-		this.age = age;
+
+	public void setDevice_id(String device_id) {
+		this.device_id = device_id;
 	}
-	public int getLevel() {
-		return level;
+
+	private static final String TABLE_NAME = "user_info";
+	private static String[] keyColumns = { "username", "password", "device_id", };
+
+	@Override
+	@JsonIgnore
+	public String getTableName() {
+		return TABLE_NAME;
 	}
-	public void setLevel(int level) {
-		this.level = level;
+
+	@Override
+	@JsonIgnore
+	public String[] getKeyColumns() {
+		return keyColumns;
 	}
-	
-	
+
 }
