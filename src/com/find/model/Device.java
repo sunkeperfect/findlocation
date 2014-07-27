@@ -29,6 +29,12 @@ public class Device implements Saveable {
 		this.device_token = device_token;
 	}
 
+	@Override
+	public String toString() {
+		return "Device [id=" + id + ", device_id=" + device_id
+				+ ", device_token=" + device_token + "]";
+	}
+
 	private static final String TABLE_NAME = "device";
 	private static String[] keyColumns = { "device_id", "device_token" };
 

@@ -24,6 +24,16 @@ public class DeviceService {
 		for (int i = 0; i < 6; i++) {
 			deviceToken += chars.charAt((int) (Math.random() * 36));
 		}
+		// 需要去数据库验证唯一性
+		if (checkToken(deviceToken)) {
+			System.out.println("token already exist,recreate token!");
+			return createDeviceToken();
+		}
+		System.out.println("create token success!");
 		return deviceToken;
+	}
+
+	public boolean checkToken(String deviceToken) {
+		return deviceDao.getDeviceByToken(deviceToken) != null;
 	}
 }
