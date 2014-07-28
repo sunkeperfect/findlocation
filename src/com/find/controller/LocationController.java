@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.find.model.BaseResult;
+import com.find.model.JsonResult;
 import com.find.model.Location;
 import com.find.service.LocationService;
 
@@ -16,9 +16,9 @@ public class LocationController {
 	LocationService locationService;
 
 	@RequestMapping({ "/location" })
-	public @ResponseBody BaseResult addLocation(
+	public @ResponseBody JsonResult addLocation(
 			@ModelAttribute Location location) {
-		BaseResult result = new BaseResult();
+		JsonResult result = new JsonResult();
 		result.setStatus(200);
 		result.setValue(location);
 		int id = locationService.addLocation(location);

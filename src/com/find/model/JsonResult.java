@@ -1,6 +1,6 @@
 package com.find.model;
 
-public class BaseResult {
+public class JsonResult {
 	int status;
 	String msg;
 	Object value;

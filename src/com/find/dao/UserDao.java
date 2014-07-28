@@ -33,4 +33,23 @@ public class UserDao extends BaseDao {
 		}
 		return user;
 	}
+
+	public UserInfo login(String username, String password) {
+		UserInfo user;
+		try {
+			RowMapper<UserInfo> rm = ParameterizedBeanPropertyRowMapper
+					.newInstance(UserInfo.class);
+			user = getJdbcTemplate().queryForObject(
+					"select * from user_info where username='" + username
+							+ "' and password ='" + password + "'", rm);
+		} catch (Exception e) {
+			if ((e instanceof IncorrectResultSizeDataAccessException)
+					&& ((IncorrectResultSizeDataAccessException) e)
+							.getActualSize() == 0)
+				return null;
+			e.printStackTrace();
+			return null;
+		}
+		return user;
+	}
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.find.model.BaseResult;
+import com.find.model.JsonResult;
 import com.find.service.DeviceService;
 
 @Controller
@@ -16,7 +16,7 @@ public class DeviceController {
 	DeviceService deviceService;
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Object add(String device_id) {
-		BaseResult result = new BaseResult();
+		JsonResult result = new JsonResult();
 		if (device_id == null || "".equals(device_id)) {
 			result.setStatus(500);
 			result.setMsg("ÃÌº” ß∞‹¡À£°device_idŒ™ø’!");

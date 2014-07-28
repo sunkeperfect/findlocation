@@ -31,4 +31,11 @@ public class UserService {
 	public void register(UserInfo user) {
 		userDao.add(user);
 	}
+
+	/**
+	 * µÇÂ¼
+	 */
+	public UserInfo login(String username, String password) {
+		return userDao.login(username, password);
+	}
 }
