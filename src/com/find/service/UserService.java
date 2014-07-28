@@ -18,17 +18,17 @@ public class UserService {
 	}
 
 	/**
-	 * 生成userToken
+	 * 检查用户是否存在 存在 true 不存在false
 	 */
-	public String createDeviceToken(String device_id) {
-		String deviceToken = "";
-		String chars = "abcdefghijklmnopqrstuvwxyz1234567890";
-		for (int i = 0; i < 6; i++) {
-			deviceToken += chars.charAt((int) (Math.random() * 36));
-		}
-		return deviceToken;
+
+	public boolean checkUserName(String username) {
+		return userDao.getUserByName(username) != null;
 	}
+
 	/**
-	 * 
+	 * 注册帐号
 	 */
+	public void register(UserInfo user) {
+		userDao.add(user);
+	}
 }

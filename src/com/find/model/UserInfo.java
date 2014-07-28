@@ -6,7 +6,7 @@ public class UserInfo implements Saveable {
 	int id;
 	String username;
 	String password;
-	String device_id;
+	String email;
 
 	public int getId() {
 		return id;
@@ -32,16 +32,16 @@ public class UserInfo implements Saveable {
 		this.password = password;
 	}
 
-	public String getDevice_id() {
-		return device_id;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setDevice_id(String device_id) {
-		this.device_id = device_id;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	private static final String TABLE_NAME = "user_info";
-	private static String[] keyColumns = { "username", "password", "device_id", };
+	private static String[] keyColumns = { "username", "password", "email" };
 
 	@Override
 	@JsonIgnore
