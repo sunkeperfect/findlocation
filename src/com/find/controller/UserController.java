@@ -19,6 +19,7 @@ public class UserController {
 
 	@RequestMapping(value = "/")
 	public String index() {
+		System.out.println("服务器启动成功！");
 		return "index";
 	}
 
@@ -51,6 +52,13 @@ public class UserController {
 	}
 
 	// "/user/userLogin/{loginname},{loginpassword}?format=json";
+	/**
+	 * 登陆
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	@RequestMapping(value = "/login/{username}/{password}", method = RequestMethod.GET)
 	public @ResponseBody Object login(
 			@PathVariable("username") String username,
@@ -71,6 +79,57 @@ public class UserController {
 			result.setMsg("登录异常！");
 			result.setValue(null);
 			result.setStatus(500);
+		}
+		return result;
+	}
+
+	/**
+	 * 修改密码
+	 */
+	@RequestMapping(value = "/modify_password", method = RequestMethod.POST)
+	public @ResponseBody Object modifyPassword(String username,
+			String password, String newpassword) {
+		JsonResult result = new JsonResult();
+		result.setMsg("修改密码失败！");
+		result.setStatus(500);
+		try {
+			if (userService.login(username, password) != null) {
+				boolean flag = userService
+						.modifyPassword(username, newpassword);
+				if (flag) {
+					result.setMsg("修改密码成功！");
+					result.setStatus(200);
+				} else {
+					result.setMsg("修改密码失败!!");
+					result.setStatus(500);
+				}
+			} else {
+				result.setMsg("没有找到该用户！");
+				result.setStatus(200);
+			}
+		} catch (Exception e) {
+
+		}
+		return result;
+	}
+
+	/**
+	 * 取回密码
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/retrieve_password", method = RequestMethod.POST)
+	public @ResponseBody Object retrievePassword(String username) {
+		JsonResult result = new JsonResult();
+		result.setMsg("找回密码失败！");
+		result.setStatus(500);
+		try {
+			if (userService.retrievePassword(username)) {
+				result.setMsg("新密码已经至您的邮箱！");
+				result.setStatus(200);
+			}
+		} catch (Exception e) {
+
 		}
 		return result;
 	}

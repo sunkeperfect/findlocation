@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.find.model.Device;
 import com.find.model.UserInfo;
 
 @Repository("userDao")
@@ -51,5 +50,15 @@ public class UserDao extends BaseDao {
 			return null;
 		}
 		return user;
+	}
+
+	public int update(UserInfo user) {
+		String sql = "update " + UserInfo.TABLE_NAME
+				+ " set username=?,password=?,email=? where id=?";
+		Object[] args = new Object[] { user.getUsername(), user.getPassword(),
+				user.getEmail(), user.getId() };
+		int count = getJdbcTemplate().update(sql, args);
+
+		return count;
 	}
 }

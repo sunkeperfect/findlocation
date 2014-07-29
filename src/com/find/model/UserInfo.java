@@ -40,8 +40,8 @@ public class UserInfo implements Saveable {
 		this.email = email;
 	}
 
-	private static final String TABLE_NAME = "user_info";
-	private static String[] keyColumns = { "username", "password", "email" };
+	public static final String TABLE_NAME = "user_info";
+	public static String[] keyColumns = { "username", "password", "email" };
 
 	@Override
 	@JsonIgnore
