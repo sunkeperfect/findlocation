@@ -1,5 +1,7 @@
 package com.find.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public class Device implements Saveable {
 	int id;
 	String device_id;
@@ -38,12 +40,14 @@ public class Device implements Saveable {
 	private static final String TABLE_NAME = "device";
 	private static String[] keyColumns = { "device_id", "device_token" };
 
+	@JsonIgnore
 	@Override
 	public String getTableName() {
 		// TODO Auto-generated method stub
 		return TABLE_NAME;
 	}
 
+	@JsonIgnore
 	@Override
 	public String[] getKeyColumns() {
 		// TODO Auto-generated method stub

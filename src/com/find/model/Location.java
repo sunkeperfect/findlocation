@@ -7,6 +7,7 @@ public class Location implements Saveable {
 	String longitude;
 	String latitude;
 	String device_id;
+	String device_token;
 
 	public int getId() {
 		return id;
@@ -32,6 +33,13 @@ public class Location implements Saveable {
 		this.latitude = latitude;
 	}
 
+	public String getDevice_token() {
+		return device_token;
+	}
+
+	public void setDevice_token(String device_token) {
+		this.device_token = device_token;
+	}
 
 	public String getDevice_id() {
 		return device_id;
@@ -41,9 +49,9 @@ public class Location implements Saveable {
 		this.device_id = device_id;
 	}
 
-
-	static final String TABLE_NAME = "location";
-	private static String[] keyColumns = { "longitude", "latitude", "device_id" };
+	public static final String TABLE_NAME = "location";
+	public static String[] keyColumns = { "longitude", "latitude",
+			"device_token", "device_id" };
 
 	@Override
 	@JsonIgnore

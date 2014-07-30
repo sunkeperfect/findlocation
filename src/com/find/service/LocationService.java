@@ -1,5 +1,7 @@
 package com.find.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,13 @@ import com.find.model.Location;
 public class LocationService {
 	@Autowired
 	LocationDao locationDao;
+
 	public int addLocation(Location location) {
 		location = locationDao.addLocation(location);
 		return location.getId();
 	}
 
+	public List<Location> getLocations() {
+		return locationDao.getLocations();
+	}
 }

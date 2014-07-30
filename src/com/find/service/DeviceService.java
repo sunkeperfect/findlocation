@@ -11,11 +11,12 @@ public class DeviceService {
 	@Autowired
 	DeviceDao deviceDao;
 
-	public int add(String device_id) {
+	public Device add(String device_id) {
 		Device device = new Device();
 		device.setDevice_id(device_id);
 		device.setDevice_token(createDeviceToken());
-		return deviceDao.add(device);
+		device.setId(deviceDao.add(device));
+		return device;
 	}
 
 	public String createDeviceToken() {
