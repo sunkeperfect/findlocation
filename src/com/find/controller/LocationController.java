@@ -32,6 +32,8 @@ public class LocationController {
 			int id = locationService.addLocation(location);
 			if (id > 0) {
 				result.setStatus(200);
+				result.setValue(location);
+				System.out.println(location.getAddress());
 				result.setMsg("插入数据成功！");
 			} else {
 				result.setStatus(1001);

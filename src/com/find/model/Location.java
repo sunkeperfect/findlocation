@@ -8,6 +8,8 @@ public class Location implements Saveable {
 	String latitude;
 	String device_id;
 	String device_token;
+	String address;
+	long date_time;
 
 	public int getId() {
 		return id;
@@ -49,9 +51,25 @@ public class Location implements Saveable {
 		this.device_id = device_id;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public long getDate_time() {
+		return date_time;
+	}
+
+	public void setDate_time(long date_time) {
+		this.date_time = date_time;
+	}
+
 	public static final String TABLE_NAME = "location";
-	public static String[] keyColumns = { "longitude", "latitude",
-			"device_token", "device_id" };
+	public static String[] keyColumns = { "longitude", "latitude", "address",
+			"device_token", "device_id", "date_time" };
 
 	@Override
 	@JsonIgnore

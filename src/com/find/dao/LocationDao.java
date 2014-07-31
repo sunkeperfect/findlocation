@@ -13,6 +13,7 @@ import com.find.model.Location;
 @Repository("locationDao")
 public class LocationDao extends BaseDao {
 	public Location addLocation(Location location) {
+		location.setDate_time(System.currentTimeMillis());
 		location.setId(super.saveAndReturnKey(location).intValue());
 		return location;
 	}

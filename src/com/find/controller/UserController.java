@@ -53,7 +53,6 @@ public class UserController {
 
 	// "/user/userLogin/{loginname},{loginpassword}?format=json";
 	/**
-	 * 登陆
 	 * 
 	 * @param username
 	 * @param password
