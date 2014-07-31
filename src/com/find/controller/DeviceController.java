@@ -21,17 +21,17 @@ public class DeviceController {
 		JsonResult result = new JsonResult();
 		if (device_id == null || "".equals(device_id)) {
 			result.setStatus(500);
-			result.setMsg("Ìí¼ÓÊ§°ÜÁË£¡device_idÎª¿Õ!");
+			result.setMsg("æ·»åŠ å¤±è´¥äº†ï¼device_idä¸ºç©º!");
 			return result;
 		}
 		Device device = deviceService.add(device_id);
 		if (device != null && device.getId() > 0) {
 			result.setStatus(200);
 			result.setValue(device);
-			result.setMsg("Ìí¼Ó³É¹¦ÁË£¡");
+			result.setMsg("æ·»åŠ æˆåŠŸäº†ï¼");
 		} else {
 			result.setStatus(500);
-			result.setMsg("Ìí¼ÓÊ§°ÜÁË£¡");
+			result.setMsg("æ·»åŠ å¤±è´¥äº†ï¼");
 		}
 		return result;
 	}

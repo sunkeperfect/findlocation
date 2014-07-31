@@ -25,7 +25,7 @@ public class DeviceService {
 		for (int i = 0; i < 6; i++) {
 			deviceToken += chars.charAt((int) (Math.random() * 36));
 		}
-		// ÐèÒªÈ¥Êý¾Ý¿âÑéÖ¤Î¨Ò»ÐÔ
+		// éœ€è¦åŽ»æ•°æ®åº“éªŒè¯å”¯ä¸€æ€§
 		if (checkToken(deviceToken)) {
 			System.out.println("token already exist,recreate token!");
 			return createDeviceToken();

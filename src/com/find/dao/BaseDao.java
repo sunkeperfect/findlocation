@@ -12,10 +12,10 @@ import com.find.model.Saveable;
 public class BaseDao extends JdbcDaoSupport {
 
 	/**
-	 * Ìí¼Ó £¬ÊôĞÔºÍÊı¾İ¿â×Ö¶ÎÃûÒ»ÖÂ£¬·µ»ØÖ÷¼ü
+	 * æ·»åŠ  ï¼Œå±æ€§å’Œæ•°æ®åº“å­—æ®µåä¸€è‡´ï¼Œè¿”å›ä¸»é”®
 	 * 
 	 * @param objForSave
-	 *            ,¼Ì³ĞSaveable µÄ½Ó¿ÚµÄÀà
+	 *            ,ç»§æ‰¿Saveable çš„æ¥å£çš„ç±»
 	 * @return
 	 */
 	public Number saveAndReturnKey(Saveable objForSave) {
@@ -24,7 +24,7 @@ public class BaseDao extends JdbcDaoSupport {
 	}
 	
 	/**
-	 * Ìí¼ÓÊµÌå,·µ»ØÖ÷¼ü
+	 * æ·»åŠ å®ä½“,è¿”å›ä¸»é”®
 	 * 
 	 * @param objForSave
 	 * @param tableName
@@ -49,7 +49,7 @@ public class BaseDao extends JdbcDaoSupport {
 
 	/**
 	 * @param objForSave
-	 *            ²åÈëÊı¾İ¿âµÄÀà
+	 *            æ’å…¥æ•°æ®åº“çš„ç±»
 	 * @param tableName
 	 * @param keyColumns
 	 * @return
@@ -63,7 +63,7 @@ public class BaseDao extends JdbcDaoSupport {
 
 	/**
 	 * @param objForSave
-	 *            ²åÈëÊı¾İ¿âµÄÀà£¬×¢Òâ
+	 *            æ’å…¥æ•°æ®åº“çš„ç±»ï¼Œæ³¨æ„
 	 * @param tableName
 	 * @param keyColumns
 	 * @return
@@ -78,7 +78,7 @@ public class BaseDao extends JdbcDaoSupport {
 	/**
 	 * 
 	 * @param objForSave
-	 *            ²åÈëÊı¾İ¿âµÄÀà
+	 *            æ’å…¥æ•°æ®åº“çš„ç±»
 	 * @param tableName
 	 * @param keyColumns
 	 * @return

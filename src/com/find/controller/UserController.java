@@ -19,7 +19,7 @@ public class UserController {
 
 	@RequestMapping(value = "/")
 	public String index() {
-		System.out.println("·şÎñÆ÷Æô¶¯³É¹¦£¡");
+		System.out.println("æœåŠ¡å™¨å¯åŠ¨æˆåŠŸï¼");
 		return "index";
 	}
 
@@ -33,19 +33,19 @@ public class UserController {
 					if (user.getId() > 0) {
 						result.setStatus(200);
 						result.setValue(user);
-						result.setMsg("×¢²á³É¹¦£¡");
+						result.setMsg("æ³¨å†ŒæˆåŠŸï¼");
 					}
 				} else {
 					result.setStatus(500);
 					result.setValue(user);
-					result.setMsg("ÓÃ»§ÃûÒÑ´æÔÚ£¡");
+					result.setMsg("ç”¨æˆ·åå·²å­˜åœ¨ï¼");
 					return result;
 				}
 			}
 		} catch (Exception e) {
 			result.setStatus(500);
 			result.setValue(user);
-			result.setMsg("×¢²áÊ§°Ü£¡");
+			result.setMsg("æ³¨å†Œå¤±è´¥ï¼");
 			return result;
 		}
 		return result;
@@ -53,7 +53,7 @@ public class UserController {
 
 	// "/user/userLogin/{loginname},{loginpassword}?format=json";
 	/**
-	 * µÇÂ½
+	 * ç™»é™†
 	 * 
 	 * @param username
 	 * @param password
@@ -69,14 +69,14 @@ public class UserController {
 			if (user != null) {
 				result.setStatus(200);
 				result.setValue(user);
-				result.setMsg("µÇÂ¼³É¹¦£¡");
+				result.setMsg("ç™»å½•æˆåŠŸï¼");
 			} else {
-				result.setMsg("ÓÃ»§Ãû»òÃÜÂë²»ÕıÈ·£¡");
+				result.setMsg("ç”¨æˆ·åæˆ–å¯†ç ä¸æ­£ç¡®ï¼");
 				result.setValue(username + password);
 				result.setStatus(500);
 			}
 		} catch (Exception e) {
-			result.setMsg("µÇÂ¼Òì³££¡");
+			result.setMsg("ç™»å½•å¼‚å¸¸ï¼");
 			result.setValue(null);
 			result.setStatus(500);
 		}
@@ -84,27 +84,27 @@ public class UserController {
 	}
 
 	/**
-	 * ĞŞ¸ÄÃÜÂë
+	 * ä¿®æ”¹å¯†ç 
 	 */
 	@RequestMapping(value = "/modify_password", method = RequestMethod.POST)
 	public @ResponseBody Object modifyPassword(String username,
 			String password, String newpassword) {
 		JsonResult result = new JsonResult();
-		result.setMsg("ĞŞ¸ÄÃÜÂëÊ§°Ü£¡");
+		result.setMsg("ä¿®æ”¹å¯†ç å¤±è´¥ï¼");
 		result.setStatus(500);
 		try {
 			if (userService.login(username, password) != null) {
 				boolean flag = userService
 						.modifyPassword(username, newpassword);
 				if (flag) {
-					result.setMsg("ĞŞ¸ÄÃÜÂë³É¹¦£¡");
+					result.setMsg("ä¿®æ”¹å¯†ç æˆåŠŸï¼");
 					result.setStatus(200);
 				} else {
-					result.setMsg("ĞŞ¸ÄÃÜÂëÊ§°Ü!!");
+					result.setMsg("ä¿®æ”¹å¯†ç å¤±è´¥!!");
 					result.setStatus(500);
 				}
 			} else {
-				result.setMsg("Ã»ÓĞÕÒµ½¸ÃÓÃ»§£¡");
+				result.setMsg("æ²¡æœ‰æ‰¾åˆ°è¯¥ç”¨æˆ·ï¼");
 				result.setStatus(200);
 			}
 		} catch (Exception e) {
@@ -114,18 +114,18 @@ public class UserController {
 	}
 
 	/**
-	 * È¡»ØÃÜÂë
+	 * å–å›å¯†ç 
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/retrieve_password", method = RequestMethod.POST)
 	public @ResponseBody Object retrievePassword(String username) {
 		JsonResult result = new JsonResult();
-		result.setMsg("ÕÒ»ØÃÜÂëÊ§°Ü£¡");
+		result.setMsg("æ‰¾å›å¯†ç å¤±è´¥ï¼");
 		result.setStatus(500);
 		try {
 			if (userService.retrievePassword(username)) {
-				result.setMsg("ĞÂÃÜÂëÒÑ¾­ÖÁÄúµÄÓÊÏä£¡");
+				result.setMsg("æ–°å¯†ç å·²ç»è‡³æ‚¨çš„é‚®ç®±ï¼");
 				result.setStatus(200);
 			}
 		} catch (Exception e) {

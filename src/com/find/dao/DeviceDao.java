@@ -45,7 +45,7 @@ public class DeviceDao extends BaseDao {
 	 * 
 	 * String username1 = (String)jdbcTemplate.queryForObject(
 	 * "select teacher_name from teacher_info where teacher_id=?",new
-	 * Object[]{userName},java.lang.String.class); ±¨³öString username1 =
+	 * Object[]{userName},java.lang.String.class); æŠ¥å‡ºString username1 =
 	 * (String)jdbcTemplate.queryForObject(
 	 * "select teacher_name from teacher_info where teacher_id=?",new
 	 * Object[]{userName},java.lang.String.class);

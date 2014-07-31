@@ -20,7 +20,7 @@ public class UserService {
 	}
 
 	/**
-	 * ¼ì²éÓÃ»§ÊÇ·ñ´æÔÚ ´æÔÚ true ²»´æÔÚfalse
+	 * æ£€æŸ¥ç”¨æˆ·æ˜¯å¦å­˜åœ¨ å­˜åœ¨ true ä¸å­˜åœ¨false
 	 */
 
 	public boolean checkUserName(String username) {
@@ -28,23 +28,23 @@ public class UserService {
 	}
 
 	/**
-	 * ×¢²áÕÊºÅ
+	 * æ³¨å†Œå¸å·
 	 */
 	public void register(UserInfo user) {
 		userDao.add(user);
 	}
 
 	/**
-	 * µÇÂ¼
+	 * ç™»å½•
 	 */
 	public UserInfo login(String username, String password) {
 		return userDao.login(username, password);
 	}
 
 	/**
-	 * ĞŞ¸ÄÃÜÂë
+	 * ä¿®æ”¹å¯†ç 
 	 * 
-	 * @return true ĞŞ¸Ä³É¹¦ false Ê§°Ü
+	 * @return true ä¿®æ”¹æˆåŠŸ false å¤±è´¥
 	 */
 	public boolean modifyPassword(String username, String password) {
 		UserInfo user = userDao.getUserByName(username);
@@ -53,18 +53,18 @@ public class UserService {
 	}
 
 	/**
-	 * È¡»ØÃÜÂë
+	 * å–å›å¯†ç 
 	 */
 	public boolean retrievePassword(String username) {
 		UserInfo user = userDao.getUserByName(username);
 		if (user != null) {
-			// Éú³ÉĞÂÃÜÂë
+			// ç”Ÿæˆæ–°å¯†ç 
 			String str = "";
 			String chars = "abcdefghijklmnopqrstuvwxyz1234567890";
 			for (int i = 0; i < 6; i++) {
 				str += chars.charAt((int) (Math.random() * 36));
 			}
-			if (modifyPassword(username, str)) { // md5¼ÓÃÜºó´æ´¢
+			if (modifyPassword(username, str)) { // md5åŠ å¯†åå­˜å‚¨
 				Mail.sentEmail(str, user.getEmail());
 				return true;
 			}

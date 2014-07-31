@@ -2,6 +2,7 @@ package com.find.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +22,23 @@ public class LocationController {
 	public @ResponseBody JsonResult addLocation(
 			@ModelAttribute Location location) {
 		JsonResult result = new JsonResult();
-		result.setStatus(200);
-		int id = locationService.addLocation(location);
-		if (id > 0) {
+		result.setStatus(1001);
+		result.setMsg("æ’å…¥æ•°æ®å¤±è´¥ï¼");
+		if (location != null && !StringUtils.isEmpty(location.getDevice_id())
+				&& !StringUtils.isEmpty(location.getLongitude())
+				&& !StringUtils.isEmpty(location.getDevice_token())
+				&& !StringUtils.isEmpty(location.getLatitude())) {
 			result.setStatus(200);
-			result.setMsg("²åÈëÊı¾İ³É¹¦£¡");
+			int id = locationService.addLocation(location);
+			if (id > 0) {
+				result.setStatus(200);
+				result.setMsg("æ’å…¥æ•°æ®æˆåŠŸï¼");
+			} else {
+				result.setStatus(1001);
+				result.setMsg("æ’å…¥æ•°æ®å¤±è´¥ï¼");
+			}
 		} else {
-			result.setStatus(1001);
-			result.setMsg("²åÈëÊı¾İÊ§°Ü£¡");
+			result.setMsg("å‚æ•°å¼‚å¸¸ï¼");
 		}
 		return result;
 	}
@@ -39,10 +49,10 @@ public class LocationController {
 			@PathVariable("device_id") String device_id,
 			@PathVariable("device_token") String device_token) {
 		JsonResult result = new JsonResult();
-		result.setMsg("»ñÈ¡Êı¾İÒì³££¡");
+		result.setMsg("è·å–æ•°æ®å¼‚å¸¸ï¼");
 		result.setStatus(500);
 		try {
-			result.setMsg("»ñÈ¡Êı¾İ³É¹¦£¡");
+			result.setMsg("è·å–æ•°æ®æˆåŠŸï¼");
 			result.setStatus(200);
 			result.setValue(locationService.getLocations());
 		} catch (Exception e) {

@@ -1,13 +1,13 @@
 package com.find.dao;
 
 /**
- * ¿É²åÈëÊı¾İ¿âµÄ
+ * å¯æ’å…¥æ•°æ®åº“çš„
  * @author joe
- * @date  2011-10-24 ÉÏÎç10:50:27
+ * @date  2011-10-24 ä¸Šåˆ10:50:27
  */
 public interface Saveable {
 
 	public String getTableName();
-	//Ö÷¼ü×Ö¶Î
+	//ä¸»é”®å­—æ®µ
 	public String[] getKeyColumns();
 }

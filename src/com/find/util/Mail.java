@@ -11,10 +11,10 @@ public class Mail {
 		email.setAuthentication("sunkeperfect@163.com", "sun7026958");
 		email.setCharset("UTF-8");
 		try {
-			email.addTo(toAddress);// Òª·¢ËÍµÄµØÖ·
-			email.setFrom("sunkeperfect@163.com");// ±ØĞëºÍAuthenticationÊ¹ÓÃµÄÓÃ»§ÏàÍ¬£¬·ñÔòÊ§°Ü
-			email.setSubject("FindYou¡¾ÃÜÂëÕÒ»Ø¡¿");// Òª·¢ËÍµÄÖ÷Ìâ
-			email.setMsg("ÄúµÄĞÂÃÜÂëÎª£º" + content);// Òª·¢ËÍµÄÄÚÈİ
+			email.addTo(toAddress);// è¦å‘é€çš„åœ°å€
+			email.setFrom("sunkeperfect@163.com");// å¿…é¡»å’ŒAuthenticationä½¿ç”¨çš„ç”¨æˆ·ç›¸åŒï¼Œå¦åˆ™å¤±è´¥
+			email.setSubject("FindYouã€å¯†ç æ‰¾å›ã€‘");// è¦å‘é€çš„ä¸»é¢˜
+			email.setMsg("æ‚¨çš„æ–°å¯†ç ä¸ºï¼š" + content);// è¦å‘é€çš„å†…å®¹
 			email.send();
 		} catch (EmailException e) {
 			e.printStackTrace();
