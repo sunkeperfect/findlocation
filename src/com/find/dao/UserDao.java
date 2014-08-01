@@ -54,9 +54,9 @@ public class UserDao extends BaseDao {
 
 	public int update(UserInfo user) {
 		String sql = "update " + UserInfo.TABLE_NAME
-				+ " set username=?,password=?,email=? where id=?";
+				+ " set username=?,password=?,email=?,user_token=? where id=?";
 		Object[] args = new Object[] { user.getUsername(), user.getPassword(),
-				user.getEmail(), user.getId() };
+				user.getEmail(), user.getUser_token(), user.getId() };
 		int count = getJdbcTemplate().update(sql, args);
 
 		return count;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.find.dao.DeviceDao;
 import com.find.model.Device;
+import com.find.util.Utils;
 
 @Service("deviceService")
 public class DeviceService {
@@ -20,11 +21,7 @@ public class DeviceService {
 	}
 
 	public String createDeviceToken() {
-		String deviceToken = "";
-		String chars = "abcdefghijklmnopqrstuvwxyz1234567890";
-		for (int i = 0; i < 6; i++) {
-			deviceToken += chars.charAt((int) (Math.random() * 36));
-		}
+		String deviceToken = Utils.randomString(6);
 		// 需要去数据库验证唯一性
 		if (checkToken(deviceToken)) {
 			System.out.println("token already exist,recreate token!");

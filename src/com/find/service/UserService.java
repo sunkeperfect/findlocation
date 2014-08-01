@@ -1,14 +1,12 @@
 package com.find.service;
 
-import java.util.Iterator;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.find.dao.UserDao;
 import com.find.model.UserInfo;
-import com.find.util.MD5;
 import com.find.util.Mail;
+import com.find.util.Utils;
 
 @Service("userService")
 public class UserService {
@@ -31,6 +29,7 @@ public class UserService {
 	 * 注册帐号
 	 */
 	public void register(UserInfo user) {
+		user.setUser_token(Utils.randomString(16));
 		userDao.add(user);
 	}
 
@@ -38,7 +37,10 @@ public class UserService {
 	 * 登录
 	 */
 	public UserInfo login(String username, String password) {
-		return userDao.login(username, password);
+		UserInfo user = userDao.login(username, password);
+		user.setUser_token(Utils.randomString(16));
+		userDao.update(user);
+		return user;
 	}
 
 	/**
@@ -59,11 +61,7 @@ public class UserService {
 		UserInfo user = userDao.getUserByName(username);
 		if (user != null) {
 			// 生成新密码
-			String str = "";
-			String chars = "abcdefghijklmnopqrstuvwxyz1234567890";
-			for (int i = 0; i < 6; i++) {
-				str += chars.charAt((int) (Math.random() * 36));
-			}
+			String str = Utils.randomString(6);
 			if (modifyPassword(username, str)) { // md5加密后存储
 				Mail.sentEmail(str, user.getEmail());
 				return true;
