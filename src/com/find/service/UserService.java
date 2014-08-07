@@ -38,8 +38,10 @@ public class UserService {
 	 */
 	public UserInfo login(String username, String password) {
 		UserInfo user = userDao.login(username, password);
-		user.setUser_token(Utils.randomString(16));
-		userDao.update(user);
+		if (user != null) {
+			user.setUser_token(Utils.randomString(16));
+			userDao.update(user);
+		}
 		return user;
 	}
 

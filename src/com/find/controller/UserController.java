@@ -71,7 +71,7 @@ public class UserController {
 				result.setMsg("登录成功！");
 			} else {
 				result.setMsg("用户名或密码不正确！");
-				result.setValue(username + password);
+				result.setValue(null);
 				result.setStatus(500);
 			}
 		} catch (Exception e) {
