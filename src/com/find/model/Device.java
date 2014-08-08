@@ -2,6 +2,8 @@ package com.find.model;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import com.find.dao.Saveable;
+
 public class Device implements Saveable {
 	int id;
 	String device_id;

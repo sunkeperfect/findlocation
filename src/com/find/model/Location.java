@@ -2,6 +2,8 @@ package com.find.model;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import com.find.dao.Saveable;
+
 public class Location implements Saveable {
 	int id;
 	String longitude;

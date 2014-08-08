@@ -2,12 +2,10 @@ package com.find.dao;
 
 import java.util.List;
 
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.find.model.Device;
 import com.find.model.Location;
 
 @Repository("locationDao")

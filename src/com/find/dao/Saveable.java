@@ -2,8 +2,6 @@ package com.find.dao;
 
 /**
  * 可插入数据库的
- * @author joe
- * @date  2011-10-24 上午10:50:27
  */
 public interface Saveable {
 

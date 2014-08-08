@@ -7,8 +7,6 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-import com.find.model.Saveable;
-
 public class BaseDao extends JdbcDaoSupport {
 
 	/**

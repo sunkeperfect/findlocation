@@ -1,8 +1,13 @@
 package com.find.model;
 
-public class Listener {
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import com.find.dao.Saveable;
+
+public class Listener implements Saveable {
 	int id;
-	int user_id;
+	String username;
+	String device_id;
 	String device_token;
 	String name;
 
@@ -14,12 +19,20 @@ public class Listener {
 		this.id = id;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getDevice_id() {
+		return device_id;
+	}
+
+	public void setDevice_id(String device_id) {
+		this.device_id = device_id;
 	}
 
 	public String getDevice_token() {
@@ -36,6 +49,24 @@ public class Listener {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	private static final String TABLE_NAME = "listener";
+	private static String[] keyColumns = { "username", "device_id",
+			"device_token", "name" };
+
+	@Override
+	@JsonIgnore
+	public String getTableName() {
+		// TODO Auto-generated method stub
+		return TABLE_NAME;
+	}
+
+	@JsonIgnore
+	@Override
+	public String[] getKeyColumns() {
+		// TODO Auto-generated method stub
+		return keyColumns;
 	}
 
 }

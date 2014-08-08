@@ -65,7 +65,7 @@ public class UserService {
 			// 生成新密码
 			String str = Utils.randomString(6);
 			if (modifyPassword(username, str)) { // md5加密后存储
-				Mail.sentEmail(str, user.getEmail());
+				Mail.sentEmail(str, user.getUsername());
 				return true;
 			}
 		}
