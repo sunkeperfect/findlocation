@@ -28,6 +28,6 @@ public class ListenerController {
 			result.setValue(null);
 			result.setStatus(500);
 		}
-		return listener;
+		return result;
 	}
 }
