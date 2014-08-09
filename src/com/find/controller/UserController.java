@@ -85,9 +85,11 @@ public class UserController {
 	/**
 	 * 修改密码
 	 */
-	@RequestMapping(value = "/modify_password", method = RequestMethod.POST)
-	public @ResponseBody Object modifyPassword(String username,
-			String password, String newpassword) {
+	@RequestMapping(value = "/modify_password/{username}/{password}/{newpassword}", method = RequestMethod.PUT)
+	public @ResponseBody Object modifyPassword(
+			@PathVariable("username") String username,
+			@PathVariable("password") String password,
+			@PathVariable("newpassword") String newpassword) {
 		JsonResult result = new JsonResult();
 		result.setMsg("修改密码失败！");
 		result.setStatus(500);

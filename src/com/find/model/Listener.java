@@ -51,8 +51,8 @@ public class Listener implements Saveable {
 		this.name = name;
 	}
 
-	private static final String TABLE_NAME = "listeners";
-	private static String[] keyColumns = { "username", "device_id",
+	public static final String TABLE_NAME = "listeners";
+	public static String[] keyColumns = { "username", "device_id",
 			"device_token", "name" };
 
 	@Override
