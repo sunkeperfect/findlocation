@@ -18,7 +18,7 @@ public class LocationService {
 		return location.getId();
 	}
 
-	public List<Location> getLocations() {
-		return locationDao.getLocations();
+	public List<Location> getLocations(String device_token) {
+		return locationDao.getLocations(device_token);
 	}
 }

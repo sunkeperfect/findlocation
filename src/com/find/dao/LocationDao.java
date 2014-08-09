@@ -16,12 +16,13 @@ public class LocationDao extends BaseDao {
 		return location;
 	}
 
-	public List<Location> getLocations() {
+	public List<Location> getLocations(String device_token) {
 		// return getJdbcTemplate().query("select * from location where  ",
 		// new BeanPropertyRowMapper(Location.class));
 		RowMapper<Location> rm = ParameterizedBeanPropertyRowMapper
 				.newInstance(Location.class);
-		String sql = "select * from location";
+		String sql = "select * from location where device_token='"
+				+ device_token + "'";
 		return getJdbcTemplate().query(sql, rm);
 	}
 

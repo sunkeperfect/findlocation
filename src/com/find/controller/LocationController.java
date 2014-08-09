@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.find.model.JsonResult;
@@ -56,7 +57,7 @@ public class LocationController {
 		try {
 			result.setMsg("获取数据成功！");
 			result.setStatus(200);
-			result.setValue(locationService.getLocations());
+			result.setValue(locationService.getLocations(device_token));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
