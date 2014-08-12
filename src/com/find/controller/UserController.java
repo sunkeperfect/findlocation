@@ -120,13 +120,16 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/retrieve_password", method = RequestMethod.POST)
-	public @ResponseBody Object retrievePassword(String username) {
+	public @ResponseBody Object retrievePassword(String email) {
 		JsonResult result = new JsonResult();
 		result.setMsg("找回密码失败！");
 		result.setStatus(500);
 		try {
-			if (userService.retrievePassword(username)) {
+			if (userService.retrievePassword(email)) {
 				result.setMsg("新密码已经至您的邮箱！");
+				result.setStatus(200);
+			} else {
+				result.setMsg("找回密码失败！");
 				result.setStatus(200);
 			}
 		} catch (Exception e) {
