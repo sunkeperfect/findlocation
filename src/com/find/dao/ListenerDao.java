@@ -82,6 +82,11 @@ public class ListenerDao extends BaseDao {
 		}
 		return listeners;
 	}
+
+	public int deleteById(int id) {
+		String sql = "delete from BookInfo where bid =?";
+		return getJdbcTemplate().update(sql, new Object[] { id });
+	}
 	/**
 	 * UserInfo user = null; try { RowMapper<UserInfo> rm =
 	 * ParameterizedBeanPropertyRowMapper .newInstance(UserInfo.class); user =

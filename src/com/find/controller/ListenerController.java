@@ -62,8 +62,17 @@ public class ListenerController {
 		return result;
 	}
 
+	/**
+	 * 获取列表数据
+	 * 
+	 * @param username
+	 * @param device_id
+	 * @return
+	 */
 	@RequestMapping(value = "listeners/{username}/{device_id}", method = RequestMethod.GET)
-	public @ResponseBody Object getListeners(@PathVariable("username") String username,@PathVariable("device_id") String device_id) {
+	public @ResponseBody Object getListeners(
+			@PathVariable("username") String username,
+			@PathVariable("device_id") String device_id) {
 		JsonResult result = new JsonResult();
 		try {
 			List<Listener> list = listenerService.getListeners(username,
@@ -75,6 +84,24 @@ public class ListenerController {
 			} else {
 				result.setMsg("获取数据异常！");
 				result.setValue(null);
+				result.setStatus(500);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@RequestMapping(value = "listener/{id}")
+	public @ResponseBody Object deleteListener(@PathVariable("id") int id) {
+		JsonResult result = new JsonResult();
+		try {
+			if (listenerService.delete(id)) {
+				result.setMsg("删除成功！");
+				result.setStatus(200);
+				result.setValue(null);
+			} else {
+				result.setMsg("");
 				result.setStatus(500);
 			}
 		} catch (Exception e) {

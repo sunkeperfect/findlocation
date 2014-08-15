@@ -25,11 +25,15 @@ public class ListenerService {
 	}
 
 	public List<Listener> getListeners(String username, String device_id) {
-		if (!StringUtils.isEmpty(username)) {
+		if (!StringUtils.isEmpty(username) && !username.equals("-1")) {
 			return listenerDao.getListenersByUsername(username);
-		} else if (!StringUtils.isEmpty(device_id)) {
+		} else if (!StringUtils.isEmpty(device_id) && !device_id.equals("-1")) {
 			return listenerDao.getListenersByDeviceId(device_id);
 		}
 		return null;
+	}
+
+	public boolean delete(int id) {
+		return listenerDao.deleteById(id) > 0;
 	}
 }

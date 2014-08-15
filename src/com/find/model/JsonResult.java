@@ -1,6 +1,12 @@
 package com.find.model;
 
 public class JsonResult {
+	public JsonResult() {
+		status = 10000;
+		msg = "服务器处理异常！";
+		value = null;
+	}
+
 	int status;
 	String msg;
 	Object value;

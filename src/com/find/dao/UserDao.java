@@ -58,7 +58,6 @@ public class UserDao extends BaseDao {
 		Object[] args = new Object[] { user.getUsername(), user.getPassword(),
 				user.getEmail(), user.getUser_token(), user.getId() };
 		int count = getJdbcTemplate().update(sql, args);
-
 		return count;
 	}
 }
