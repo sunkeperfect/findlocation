@@ -92,7 +92,7 @@ public class ListenerController {
 		return result;
 	}
 
-	@RequestMapping(value = "listener/{id}")
+	@RequestMapping(value = "listener/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody Object deleteListener(@PathVariable("id") int id) {
 		JsonResult result = new JsonResult();
 		try {
@@ -101,7 +101,7 @@ public class ListenerController {
 				result.setStatus(200);
 				result.setValue(null);
 			} else {
-				result.setMsg("");
+				result.setMsg("删除失败");
 				result.setStatus(500);
 			}
 		} catch (Exception e) {

@@ -84,7 +84,7 @@ public class ListenerDao extends BaseDao {
 	}
 
 	public int deleteById(int id) {
-		String sql = "delete from BookInfo where bid =?";
+		String sql = "delete from " + Listener.TABLE_NAME + " where id =?";
 		return getJdbcTemplate().update(sql, new Object[] { id });
 	}
 	/**
