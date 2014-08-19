@@ -18,6 +18,7 @@ public class DeviceController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Object add(String device_id) {
+		System.out.println("添加新设备");
 		JsonResult result = new JsonResult();
 		if (device_id == null || "".equals(device_id)) {
 			result.setStatus(500);
