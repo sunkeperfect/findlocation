@@ -99,7 +99,7 @@ public class ListenerController {
 			if (listenerService.delete(id)) {
 				result.setMsg("删除成功！");
 				result.setStatus(200);
-				result.setValue(null);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+				result.setValue(null);
 			} else {
 				result.setMsg("删除失败");
 				result.setStatus(500);

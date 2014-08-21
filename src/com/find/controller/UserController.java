@@ -137,4 +137,27 @@ public class UserController {
 		}
 		return result;
 	}
+
+	/**
+	 * 短信注册
+	 */
+	@RequestMapping(value = "/register/{mobile}", method = RequestMethod.GET)
+	public @ResponseBody Object getCheckCode(
+			@PathVariable("mobile") String mobile) {
+		JsonResult result = new JsonResult();
+		try {
+			System.out.println("mobile:" + mobile + "请求获取验证码！");
+			if (userService.getCheckCode(mobile)) {
+				result.setMsg("请求成功");
+				result.setStatus(200);
+			} else {
+				result.setMsg("请求失败");
+				result.setStatus(500);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+
+	}
 }

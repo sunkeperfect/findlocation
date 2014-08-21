@@ -1,5 +1,15 @@
 package com.find.service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +20,7 @@ import com.find.util.Utils;
 
 @Service("userService")
 public class UserService {
+	private static final String String = null;
 	@Autowired
 	UserDao userDao;
 
@@ -70,5 +81,66 @@ public class UserService {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * 发送短信至手机
+	 * 
+	 * @return true 发送成功 false 发送失败
+	 */
+	public boolean getCheckCode(String mobile) {
+		boolean connect = false;
+		try {
+			String corpId = "YXS02649";
+			String pwd = "654321";
+			String checkCode = Utils.randomCode(4);
+			String msg = "注册的验证码:" + checkCode + "。2分钟内有效！";
+			String url = "http://www.106551.com/ws/Send.aspx?";
+			String urlBody = "CorpID=" + URLEncoder.encode(corpId, "gbk")
+					+ "&Pwd=" + URLEncoder.encode(pwd, "gbk") + "&Mobile="
+					+ URLEncoder.encode(mobile, "gbk") + "&Content="
+					+ URLEncoder.encode(msg, "gbk");
+			url += urlBody;
+			System.out.println("url:" + url);
+			URL u = new URL(url);
+			try {
+				System.out.println();
+				HttpURLConnection uConnection = (HttpURLConnection) u
+						.openConnection();
+				try {
+					uConnection.connect();
+					System.out.println(uConnection.getResponseCode());
+					connect = true;
+					InputStream is = uConnection.getInputStream();
+					BufferedReader br = new BufferedReader(
+							new InputStreamReader(is));
+					StringBuilder sb = new StringBuilder();
+					while (br.read() != -1) {
+						sb.append(br.readLine());
+					}
+					String content = new String(sb);
+					// content = new String(content.getBytes("UTF8"), "UTF8");
+					System.out.println("success:" + content);
+					br.close();
+				} catch (Exception e) {
+					connect = false;
+					e.printStackTrace();
+					System.out.println("connect failed");
+				}
+
+			} catch (IOException e) {
+				System.out.println("build failed");
+				e.printStackTrace();
+			}
+
+		} catch (MalformedURLException e) {
+			System.out.println("build url failed");
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("build url failed");
+			e1.printStackTrace();
+		}
+		return connect;
 	}
 }

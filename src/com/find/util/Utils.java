@@ -10,4 +10,14 @@ public class Utils {
 		}
 		return str;
 	}
+
+	// 4位验证码
+	public static String randomCode(int count) {
+		String str = "";
+		String chars = "1234567890";
+		for (int i = 0; i < count; i++) {
+			str += chars.charAt((int) (Math.random() * 10));
+		}
+		return str;
+	}
 }
