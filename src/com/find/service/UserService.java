@@ -84,6 +84,14 @@ public class UserService {
 	}
 
 	/**
+	 * 手机注册
+	 */
+	public void mobileRegister(UserInfo user) {
+		user.setUser_token(Utils.randomString(16));
+		userDao.add(user);
+	}
+
+	/**
 	 * 发送短信至手机
 	 * 
 	 * @return true 发送成功 false 发送失败
@@ -94,7 +102,7 @@ public class UserService {
 			String corpId = "YXS02649";
 			String pwd = "654321";
 			String checkCode = Utils.randomCode(4);
-			String msg = "注册的验证码:" + checkCode + "。2分钟内有效！";
+			String msg = "注册验证码：" + checkCode + "，2分钟内有效！";
 			String url = "http://www.106551.com/ws/Send.aspx?";
 			String urlBody = "CorpID=" + URLEncoder.encode(corpId, "gbk")
 					+ "&Pwd=" + URLEncoder.encode(pwd, "gbk") + "&Mobile="
