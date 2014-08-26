@@ -23,6 +23,7 @@ public class CheckCodeManager {
 									Map.Entry<String, CheckCode> entry = it
 											.next();
 									CheckCode checkCode = entry.getValue();
+									// 确认过期时间
 									if (checkCode.deleteTime < System
 											.currentTimeMillis()) {
 										it.remove();

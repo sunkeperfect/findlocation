@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.find.common.CheckCodeManager;
 import com.find.model.JsonResult;
 import com.find.model.UserInfo;
 import com.find.service.UserService;
+import com.find.util.Utils;
 
 @Controller
 public class UserController {
@@ -24,12 +26,24 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public @ResponseBody Object register(@ModelAttribute("user") UserInfo user) {
+	public @ResponseBody Object register(@ModelAttribute("user") UserInfo user,
+			int type, String checkcode) {
 		JsonResult result = new JsonResult();
 		try {
 			if (user != null) {
 				if (!userService.checkUserName(user.getUsername())) {
-					userService.register(user);
+					if (type == 0) {
+						/**
+						 * 手机验证码 验证
+						 */
+						String code = CheckCodeManager.getInstance()
+								.getCheckCode(user.getUsername());
+						if (!code.isEmpty() && code.equals(checkcode)) {
+							userService.mobileRegister(user);
+						}
+					} else {
+						userService.register(user);
+					}
 					if (user.getId() > 0) {
 						result.setStatus(200);
 						result.setValue(user);
@@ -53,7 +67,6 @@ public class UserController {
 
 	// "/user/userLogin/{loginname},{loginpassword}?format=json";
 	/**
-	 * 
 	 * @param username
 	 * @param password
 	 * @return
@@ -139,14 +152,18 @@ public class UserController {
 	}
 
 	/**
-	 * 短信注册
+	 * 短信验证码获取
 	 */
-	@RequestMapping(value = "/register/{mobile}", method = RequestMethod.GET)
+	@RequestMapping(value = "/checkcode/{mobile}", method = RequestMethod.GET)
 	public @ResponseBody Object getCheckCode(
 			@PathVariable("mobile") String mobile) {
 		JsonResult result = new JsonResult();
 		try {
 			System.out.println("mobile:" + mobile + "请求获取验证码！");
+			if (!Utils.checkMobile(mobile)) {
+				result.setMsg("手机号格式错误！");
+				result.setStatus(500);
+			}
 			if (userService.getCheckCode(mobile)) {
 				result.setMsg("请求成功");
 				result.setStatus(200);
@@ -158,6 +175,5 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return result;
-
 	}
 }

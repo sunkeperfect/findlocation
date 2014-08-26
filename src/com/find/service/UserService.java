@@ -13,6 +13,8 @@ import java.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.find.common.CheckCodeManager;
+import com.find.common.CheckCodeManager.CheckCode;
 import com.find.dao.UserDao;
 import com.find.model.UserInfo;
 import com.find.util.Mail;
@@ -99,6 +101,7 @@ public class UserService {
 	public boolean getCheckCode(String mobile) {
 		boolean connect = false;
 		try {
+			
 			String corpId = "YXS02649";
 			String pwd = "654321";
 			String checkCode = Utils.randomCode(4);
@@ -129,6 +132,8 @@ public class UserService {
 					String content = new String(sb);
 					// content = new String(content.getBytes("UTF8"), "UTF8");
 					System.out.println("success:" + content);
+					CheckCodeManager.getInstance().addCheckCode(mobile,
+							checkCode);
 					br.close();
 				} catch (Exception e) {
 					connect = false;
