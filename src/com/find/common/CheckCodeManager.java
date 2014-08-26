@@ -59,7 +59,10 @@ public class CheckCodeManager {
 
 	public synchronized String getCheckCode(String mobile) {
 		synchronized (map) {
-			return map.get(mobile).code;
+			if (map.containsKey(mobile)) {
+				return map.get(mobile).code;
+			}
+			return "";
 		}
 	}
 

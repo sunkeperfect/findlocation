@@ -40,6 +40,11 @@ public class UserController {
 								.getCheckCode(user.getUsername());
 						if (!code.isEmpty() && code.equals(checkcode)) {
 							userService.mobileRegister(user);
+						} else {
+							result.setStatus(500);
+							result.setValue(user);
+							result.setMsg("验证码错误！");
+							return result;
 						}
 					} else {
 						userService.register(user);
@@ -57,6 +62,7 @@ public class UserController {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			result.setStatus(500);
 			result.setValue(user);
 			result.setMsg("注册失败！");
