@@ -13,6 +13,26 @@ public class DeviceDao extends BaseDao {
 		return super.saveAndReturnKey(device).intValue();
 	}
 
+	public Device getDeviceById(String device_id) {
+		Device device = null;
+		try {
+			RowMapper<Device> rm = ParameterizedBeanPropertyRowMapper
+					.newInstance(Device.class);
+			device = getJdbcTemplate().queryForObject(
+					"select * from device where device_token='" + device_id
+							+ "'", rm);
+			System.out.println("device:" + device.toString());
+		} catch (Exception e) {
+			if ((e instanceof IncorrectResultSizeDataAccessException)
+					&& ((IncorrectResultSizeDataAccessException) e)
+							.getActualSize() == 0)
+				return null;
+			e.printStackTrace();
+			return null;
+		}
+		return device;
+	}
+
 	public Device getDeviceByToken(String device_token) {
 		Device device = null;
 		try {

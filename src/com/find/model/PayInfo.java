@@ -13,7 +13,7 @@ public class PayInfo implements Saveable {
 	int id;
 	String username;
 	String deviceId;
-	String data;
+	Long date;
 
 	public int getId() {
 		return id;
@@ -39,12 +39,12 @@ public class PayInfo implements Saveable {
 		this.deviceId = deviceId;
 	}
 
-	public String getData() {
-		return data;
+	public Long getDate() {
+		return date;
 	}
 
-	public void setData(String data) {
-		this.data = data;
+	public void setDate(Long date) {
+		this.date = date;
 	}
 
 	public static final String TABLE_NAME = "pay_info";

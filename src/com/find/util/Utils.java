@@ -1,5 +1,6 @@
 package com.find.util;
 
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,5 +33,11 @@ public class Utils {
 			return true;
 		}
 		return false;
+	}
+
+	public static void main(String[] arg) {
+		long day=1000*60*60*24*2;
+		Date date = new Date(System.currentTimeMillis() + day);
+		System.out.println(date);
 	}
 }
