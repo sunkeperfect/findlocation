@@ -16,6 +16,12 @@ public class DeviceController {
 	@Autowired
 	DeviceService deviceService;
 
+	/**
+	 * 获取deivcetoken
+	 * 
+	 * @param device_id
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Object add(String device_id) {
 		System.out.println("添加新设备");

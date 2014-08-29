@@ -56,4 +56,26 @@ public class PayInfoController {
 		}
 		return result;
 	}
+
+	@RequestMapping(value = "/payinfo/{device_id}/{time}", method = RequestMethod.PUT)
+	public @ResponseBody Object increaseTime(
+			@PathVariable("device_id") String device_id,
+			@PathVariable("time") long time) {
+		JsonResult result = new JsonResult();
+		try {
+			if (payInfoService.increaseTime(device_id, time)) {
+				result.setMsg("增加时间成功！");
+				result.setStatus(200);
+			} else {
+				result.setMsg("添加时间失败");
+				result.setStatus(500);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setMsg("出现异常！");
+			result.setValue(null);
+			result.setStatus(500);
+		}
+		return result;
+	}
 }
