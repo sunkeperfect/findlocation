@@ -65,9 +65,11 @@ public class PayInfoController {
 		try {
 			if (payInfoService.increaseTime(device_id, time)) {
 				result.setMsg("增加时间成功！");
+				result.setValue(null);
 				result.setStatus(200);
 			} else {
 				result.setMsg("添加时间失败");
+				result.setValue(null);
 				result.setStatus(500);
 			}
 		} catch (Exception e) {
