@@ -23,10 +23,13 @@ public class PayInfoService {
 		payInfoDao.addPayInfo(payInfo);
 	}
 
-	public boolean increaseTime(String device_id, long time) {
+	public PayInfo increaseTime(String device_id, long time) {
 		PayInfo payInfo = getPayInfo(device_id);
 		payInfo.setDate(payInfo.getDate() + time);
-		return payInfoDao.update(payInfo) > 0;
+		if(payInfoDao.update(payInfo) > 0){
+			return payInfo;
+		}
+		return null;
 	}
 
 	public PayInfo getPayInfo(String device_id) {

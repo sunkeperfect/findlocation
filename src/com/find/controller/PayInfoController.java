@@ -63,9 +63,10 @@ public class PayInfoController {
 			@PathVariable("time") long time) {
 		JsonResult result = new JsonResult();
 		try {
-			if (payInfoService.increaseTime(device_id, time)) {
+			PayInfo payInfo = payInfoService.increaseTime(device_id, time);
+			if (payInfo != null) {
 				result.setMsg("增加时间成功！");
-				result.setValue(null);
+				result.setValue(payInfo);
 				result.setStatus(200);
 			} else {
 				result.setMsg("添加时间失败");
