@@ -20,8 +20,9 @@ public class PayInfoDao extends BaseDao {
 	 */
 	public int update(PayInfo payInfo) {
 		String sql = "update " + PayInfo.TABLE_NAME
-				+ " set date=? where device_id=? ";
-		Object[] args = new Object[] { payInfo.getDate(), payInfo.getDeviceId() };
+				+ " set expirationdate=? where device_id=? ";
+		Object[] args = new Object[] { payInfo.getExpirationdate(),
+				payInfo.getDeviceId() };
 		int count = getJdbcTemplate().update(sql, args);
 		return count;
 	}

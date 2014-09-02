@@ -57,10 +57,10 @@ public class PayInfoController {
 		return result;
 	}
 
-	@RequestMapping(value = "/payinfo/{device_id}/{time}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/payinfo", method = RequestMethod.PUT)
 	public @ResponseBody Object increaseTime(
-			@PathVariable("device_id") String device_id,
-			@PathVariable("time") long time) {
+			 String device_id,
+			long time) {
 		JsonResult result = new JsonResult();
 		try {
 			PayInfo payInfo = payInfoService.increaseTime(device_id, time);

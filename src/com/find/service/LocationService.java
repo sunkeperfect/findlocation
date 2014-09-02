@@ -18,7 +18,8 @@ public class LocationService {
 		return location.getId();
 	}
 
-	public List<Location> getLocations(String device_token) {
-		return locationDao.getLocations(device_token);
+	public List<Location> getLocations(String device_token, String device_id) {
+		// getLocation 获取位置信息 需要先判断是否有权限
+		return locationDao.getLocations(device_token, device_id);
 	}
 }

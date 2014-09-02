@@ -33,11 +33,10 @@ public class LocationController {
 			int id = locationService.addLocation(location);
 			if (id > 0) {
 				result.setStatus(200);
-				result.setValue(location);
 				System.out.println(location.getAddress());
 				result.setMsg("插入数据成功！");
 			} else {
-				result.setStatus(1001);
+				result.setStatus(500);
 				result.setMsg("插入数据失败！");
 			}
 		} else {
@@ -51,13 +50,14 @@ public class LocationController {
 			@PathVariable("username") String username,
 			@PathVariable("device_id") String device_id,
 			@PathVariable("device_token") String device_token) {
-		JsonResult result = new JsonResult();
+		JsonResult result = new JsonResult();	
 		result.setMsg("获取数据异常！");
 		result.setStatus(500);
 		try {
 			result.setMsg("获取数据成功！");
 			result.setStatus(200);
-			result.setValue(locationService.getLocations(device_token));
+			result.setValue(locationService.getLocations(device_token,
+					device_id));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

@@ -19,8 +19,8 @@ public class DeviceDao extends BaseDao {
 			RowMapper<Device> rm = ParameterizedBeanPropertyRowMapper
 					.newInstance(Device.class);
 			device = getJdbcTemplate().queryForObject(
-					"select * from device where device_token='" + device_id
-							+ "'", rm);
+					"select * from device where device_id='" + device_id + "'",
+					rm);
 			System.out.println("device:" + device.toString());
 		} catch (Exception e) {
 			if ((e instanceof IncorrectResultSizeDataAccessException)

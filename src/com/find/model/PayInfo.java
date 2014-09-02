@@ -13,7 +13,7 @@ public class PayInfo implements Saveable {
 	int id;
 	String username;
 	String deviceId;
-	Long date;
+	Long expirationdate;
 
 	public int getId() {
 		return id;
@@ -39,16 +39,17 @@ public class PayInfo implements Saveable {
 		this.deviceId = deviceId;
 	}
 
-	public Long getDate() {
-		return date;
+	public Long getExpirationdate() {
+		return expirationdate;
 	}
 
-	public void setDate(Long date) {
-		this.date = date;
+	public void setExpirationdate(Long expirationdate) {
+		this.expirationdate = expirationdate;
 	}
 
 	public static final String TABLE_NAME = "pay_info";
-	public static String[] keyColumns = { "username", "device_id", "date" };
+	public static String[] keyColumns = { "username", "device_id",
+			"expirationdate" };
 
 	@Override
 	@JsonIgnore

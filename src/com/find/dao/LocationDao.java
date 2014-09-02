@@ -16,16 +16,18 @@ public class LocationDao extends BaseDao {
 		return location;
 	}
 
-	public List<Location> getLocations(String device_token) {
+	public List<Location> getLocations(String device_token, String device_id) {
 		// return getJdbcTemplate().query("select * from location where  ",
 		// new BeanPropertyRowMapper(Location.class));
 		RowMapper<Location> rm = ParameterizedBeanPropertyRowMapper
 				.newInstance(Location.class);
+		long currentTime = System.currentTimeMillis();
 		String sql = "select * from location where device_token='"
-				+ device_token + "'";
+				+ device_token + "' and " + currentTime
+				+ " < (select expirationdate from pay_info where device_id='" + device_id
+				+ "')";
 		return getJdbcTemplate().query(sql, rm);
 	}
-
 	// public Location getLocationByColunm(String columnName, Object value) {
 	// return getJdbcTemplate().queryForObject(
 	// "select * from location where" + columnName + "=?",

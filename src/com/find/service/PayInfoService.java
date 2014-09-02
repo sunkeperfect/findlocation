@@ -19,14 +19,14 @@ public class PayInfoService {
 	 * @param user
 	 */
 	private void giveDateAdd(PayInfo payInfo) {
-		payInfo.setDate(System.currentTimeMillis() + GIVE_DAY);
+		payInfo.setExpirationdate(System.currentTimeMillis() + GIVE_DAY);
 		payInfoDao.addPayInfo(payInfo);
 	}
 
 	public PayInfo increaseTime(String device_id, long time) {
 		PayInfo payInfo = getPayInfo(device_id);
-		payInfo.setDate(payInfo.getDate() + time);
-		if(payInfoDao.update(payInfo) > 0){
+		payInfo.setExpirationdate(payInfo.getExpirationdate() + time);
+		if (payInfoDao.update(payInfo) > 0) {
 			return payInfo;
 		}
 		return null;
