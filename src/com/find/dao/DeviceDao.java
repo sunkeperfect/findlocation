@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.find.model.Device;
 
-@Repository("DeviceDao")
+@Repository("deviceDao")
 public class DeviceDao extends BaseDao {
 	public int add(Device device) {
 		return super.saveAndReturnKey(device).intValue();
