@@ -1,5 +1,7 @@
 package com.find.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -50,14 +52,15 @@ public class LocationController {
 			@PathVariable("username") String username,
 			@PathVariable("device_id") String device_id,
 			@PathVariable("device_token") String device_token) {
-		JsonResult result = new JsonResult();	
+		JsonResult result = new JsonResult();
 		result.setMsg("获取数据异常！");
 		result.setStatus(500);
+		List<Location> list = locationService.getLocations(device_token,
+				device_id);
 		try {
 			result.setMsg("获取数据成功！");
 			result.setStatus(200);
-			result.setValue(locationService.getLocations(device_token,
-					device_id));
+			result.setValue(list);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

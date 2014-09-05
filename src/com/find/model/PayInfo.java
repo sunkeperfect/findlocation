@@ -15,6 +15,11 @@ public class PayInfo implements Saveable {
 	String deviceId;
 	Long expirationdate;
 
+	/**
+	 * 是否已经过期
+	 */
+	int status;
+
 	public int getId() {
 		return id;
 	}
@@ -45,6 +50,14 @@ public class PayInfo implements Saveable {
 
 	public void setExpirationdate(Long expirationdate) {
 		this.expirationdate = expirationdate;
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public static final String TABLE_NAME = "pay_info";

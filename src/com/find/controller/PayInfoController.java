@@ -35,6 +35,13 @@ public class PayInfoController {
 				 * deviceId
 				 */
 				info = payInfoService.getPayInfo(parameter);
+				if (info.getExpirationdate() >= System.currentTimeMillis()) {
+					// 未过期
+					info.setStatus(1);
+				} else {
+					// 已过期
+					info.setStatus(0);
+				}
 				// payInfoService.
 				result.setMsg("请求成功！");
 				result.setValue(info);
@@ -57,14 +64,21 @@ public class PayInfoController {
 		return result;
 	}
 
-	@RequestMapping(value = "/payinfo", method = RequestMethod.PUT)
-	public @ResponseBody Object increaseTime(
-			 String device_id,
-			long time) {
+	@RequestMapping(value = "/payinfo/{device_id}/{time}", method = RequestMethod.PUT)
+	public @ResponseBody Object increaseTime(@PathVariable String device_id,
+			@PathVariable long time) {
 		JsonResult result = new JsonResult();
 		try {
 			PayInfo payInfo = payInfoService.increaseTime(device_id, time);
+
 			if (payInfo != null) {
+				if (payInfo.getExpirationdate() >= System.currentTimeMillis()) {
+					// 未过期
+					payInfo.setStatus(1);
+				} else {
+					// 已过期
+					payInfo.setStatus(0);
+				}
 				result.setMsg("增加时间成功！");
 				result.setValue(payInfo);
 				result.setStatus(200);

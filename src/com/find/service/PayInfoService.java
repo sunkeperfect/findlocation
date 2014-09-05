@@ -25,7 +25,11 @@ public class PayInfoService {
 
 	public PayInfo increaseTime(String device_id, long time) {
 		PayInfo payInfo = getPayInfo(device_id);
-		payInfo.setExpirationdate(payInfo.getExpirationdate() + time);
+		if (payInfo.getExpirationdate() < System.currentTimeMillis()) {
+			payInfo.setExpirationdate(System.currentTimeMillis() + time);
+		} else {
+			payInfo.setExpirationdate(payInfo.getExpirationdate() + time);
+		}
 		if (payInfoDao.update(payInfo) > 0) {
 			return payInfo;
 		}
