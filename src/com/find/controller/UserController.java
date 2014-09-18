@@ -1,5 +1,8 @@
 package com.find.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.find.common.CheckCodeManager;
 import com.find.model.JsonResult;
@@ -19,11 +23,32 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		System.out.println("服务器启动成功！");
 		return "index";
 	}
+
+//	public ModelAndView images(HttpServletRequest request,
+//			HttpServletResponse response) {
+//		System.out.println("-----img-------");
+//		return new ModelAndView("/images");
+//
+//	}
+//
+//	public ModelAndView js(HttpServletRequest request,
+//			HttpServletResponse response) {
+//		System.out.println("-----js-------");
+//		return new ModelAndView("/js");
+//
+//	}
+//
+//	public ModelAndView css(HttpServletRequest request,
+//			HttpServletResponse response) {
+//		System.out.println("-----css-------");
+//		return new ModelAndView("/css");
+//
+//	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public @ResponseBody Object register(@ModelAttribute("user") UserInfo user,

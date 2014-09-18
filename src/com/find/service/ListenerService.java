@@ -15,7 +15,10 @@ public class ListenerService {
 	ListenerDao listenerDao;
 
 	public void addListener(Listener listener) {
-		listener.setId(listenerDao.add(listener));
+		if (listenerDao.getListenerByToken(listener.getDevice_id(),
+				listener.getDevice_token()) == null) {
+			listener.setId(listenerDao.add(listener));
+		}
 	}
 
 	public int updateName(int id, String name) {

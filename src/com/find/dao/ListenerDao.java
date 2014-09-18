@@ -45,6 +45,26 @@ public class ListenerDao extends BaseDao {
 		return listener;
 	}
 
+	public Listener getListenerByToken(String device_id, String device_token) {
+		Listener listener = null;
+		try {
+			RowMapper<Listener> rm = ParameterizedBeanPropertyRowMapper
+					.newInstance(Listener.class);
+			String sql = "select * from " + Listener.TABLE_NAME
+					+ " where device_id='" + device_id
+					+ "' and device_token = '" + device_token + "'";
+			listener = getJdbcTemplate().queryForObject(sql, rm);
+		} catch (Exception e) {
+			if ((e instanceof IncorrectResultSizeDataAccessException)
+					&& ((IncorrectResultSizeDataAccessException) e)
+							.getActualSize() == 0)
+				return null;
+			e.printStackTrace();
+			return null;
+		}
+		return listener;
+	}
+
 	public List<Listener> getListenersByUsername(String username) {
 		List<Listener> listeners = null;
 		try {
