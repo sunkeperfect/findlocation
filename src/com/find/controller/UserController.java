@@ -29,26 +29,6 @@ public class UserController {
 		return "index";
 	}
 
-//	public ModelAndView images(HttpServletRequest request,
-//			HttpServletResponse response) {
-//		System.out.println("-----img-------");
-//		return new ModelAndView("/images");
-//
-//	}
-//
-//	public ModelAndView js(HttpServletRequest request,
-//			HttpServletResponse response) {
-//		System.out.println("-----js-------");
-//		return new ModelAndView("/js");
-//
-//	}
-//
-//	public ModelAndView css(HttpServletRequest request,
-//			HttpServletResponse response) {
-//		System.out.println("-----css-------");
-//		return new ModelAndView("/css");
-//
-//	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public @ResponseBody Object register(@ModelAttribute("user") UserInfo user,
