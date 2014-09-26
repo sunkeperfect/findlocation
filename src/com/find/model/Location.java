@@ -11,6 +11,7 @@ public class Location implements Saveable {
 	String device_id;
 	String device_token;
 	String address;
+	int source_flag;
 	long date_time;
 
 	public int getId() {
@@ -69,9 +70,26 @@ public class Location implements Saveable {
 		this.date_time = date_time;
 	}
 
+	public int getSource_flag() {
+		return source_flag;
+	}
+
+	public void setSource_flag(int source_flag) {
+		this.source_flag = source_flag;
+	}
+
+	@Override
+	public String toString() {
+		return "Location [id=" + id + ", longitude=" + longitude
+				+ ", latitude=" + latitude + ", device_id=" + device_id
+				+ ", device_token=" + device_token + ", address=" + address
+				+ ", source_flag=" + source_flag + ", date_time=" + date_time
+				+ "]";
+	}
+
 	public static final String TABLE_NAME = "location";
 	public static String[] keyColumns = { "longitude", "latitude", "address",
-			"device_token", "device_id", "date_time" };
+			"device_token", "device_id", "date_time", "source_flag" };
 
 	@Override
 	@JsonIgnore

@@ -118,6 +118,6 @@ public class BaseDao extends JdbcDaoSupport {
 	}
 
 	public void traceSql(String sql) {
-		System.out.println("JDBC:" + sql);
+		//System.out.println("JDBC:" + sql);
 	}
 }

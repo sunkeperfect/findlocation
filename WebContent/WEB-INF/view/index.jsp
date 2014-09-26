@@ -30,25 +30,25 @@
 		<div class="focus">
 			<div id="carousel_container" class="con">
 				<div class="pt pt_cur" style="display: block">
-					<img src="<%=path%>/images/pic1.jpg" alt="" />
+					<img src="<%=path%>/images/0.png" alt="" />
 				</div>
 				<div class="pt">
-					<img src="<%=path%>/images/splash.png" alt="" />
+					<img src="<%=path%>/images/1.jpg" alt="" />
 				</div>
 				<div class="pt">
-					<img src="<%=path%>/images/pic1.jpg" alt="" />
+					<img src="<%=path%>/images/2.png" alt="" />
 				</div>
 			</div>
 
 			<div class="znpack">
 				<div>
-					<img src="<%=path%>/images/logo2.png" class="download_logo" />
+					<img src="<%=path%>/images/51zhaoni_qr.png" class="download_qr" />
 				</div>
 
 				<br /> <a href="<%=path%>/download/51zhaoni.apk" class="download_android">
 					<div class="d_left"></div>
 					<div class="d_right">
-						<span>立即下载</span> V5.6.0&nbsp;2.1M&nbsp;2014/09/08
+						<span>立即下载</span> V1.0.0&nbsp;2.5M&nbsp;2014/09/23
 					</div>
 				</a>
 			</div>

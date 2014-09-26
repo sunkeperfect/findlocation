@@ -44,7 +44,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";background:#64b8ff
 .nav a{ text-decoration:none; color:#fff;}
 .nav a img{ padding-top:8px; padding-bottom:8px; height:60px }
 
-.znpack{position:absolute;width:212px;z-index:100; bottom:200px; right:200px;}
+.znpack{position:absolute;width:212px;z-index:100; bottom:180px; right:200px;}
 .znpack a.downbtn{float:right;width:212px;height:0;overflow:hidden;padding-top:71px; background:url(../images/down.png) no-repeat;}
 .znpack a.downbtn:hover{background-position:0 -72px}.softinfo{clear:both;height:20px;padding:10px 3px 0 0;color:#fff}.newfun{clear:both;height:21px;padding-top:5px;line-height:21px;text-align:right}.newfun a:link,.newfun a:visited{color:#fff}.softsize{margin:0 30px 0 5px}.pointips{position:absolute;left:50%;bottom:80px;width:72px;height:72px;margin-left:-40px;z-index:400}
 /*#cbf7f9#41aae7*/
@@ -55,6 +55,12 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";background:#64b8ff
 .download_logo {
 	display: block;
 	width: 150px;
+	margin-top:20px;
+}
+
+.download_qr {
+	display: block;
+	width: 228px;
 }
 
 .download_android {

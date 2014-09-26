@@ -13,6 +13,20 @@
  		http://www.springframework.org/schema/tx 
  		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
 	default-autowire="byName">
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
 	<!-- 如果有多个 DispatcherServlet 请把关于数据库和server部分的bean在web.xml中使用spring 的 listener加载 -->
 	<!-- 自动扫描controller bean，把作了注解的类转换为bean -->
 	<context:component-scan base-package="com.find" />
