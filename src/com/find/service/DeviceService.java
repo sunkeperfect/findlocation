@@ -13,8 +13,8 @@ public class DeviceService {
 	DeviceDao deviceDao;
 
 	public Device add(String device_id) {
-		Device device = null;
-		if (null == (device = deviceDao.getDeviceById(device_id))) {
+		Device device = deviceDao.getDeviceById(device_id);
+		if (null == device) {
 			device = new Device();
 			device.setDevice_id(device_id);
 			device.setDevice_token(createDeviceToken());

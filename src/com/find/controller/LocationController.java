@@ -49,20 +49,24 @@ public class LocationController {
 
 	@RequestMapping(value = "/locations/{device_token}/{username}/{device_id}", method = RequestMethod.GET)
 	public @ResponseBody JsonResult getLocationList(
+			@PathVariable("device_token") String device_token,
 			@PathVariable("username") String username,
-			@PathVariable("device_id") String device_id,
-			@PathVariable("device_token") String device_token) {
+			@PathVariable("device_id") String device_id) {
+		System.out.println("execute locations device_token:" + device_token
+				+ "  device_id:" + device_id + "username:" + username);
 		JsonResult result = new JsonResult();
 		result.setMsg("获取数据异常！");
 		result.setStatus(500);
 		List<Location> list = locationService.getLocations(device_token,
 				device_id);
+		System.out.println("list:"+list.toString());
 		try {
 			result.setMsg("获取数据成功！");
 			result.setStatus(200);
 			result.setValue(list);
 		} catch (Exception e) {
 			// TODO: handle exception
+
 		}
 		return result;
 	}

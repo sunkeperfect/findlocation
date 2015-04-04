@@ -29,8 +29,12 @@ public class LocationDao extends BaseDao {
 		long currentTime = System.currentTimeMillis();
 		String sql = "select * from location where device_token='"
 				+ device_token + "' and " + currentTime
+
 				+ " < (select expirationdate from pay_info where device_id='" + device_id
 				+ "') ORDER BY id DESC  LIMIT 0,888";
+
+		System.out.println("execute getLocations sql:" + sql);
+
 		return getJdbcTemplate().query(sql, rm);
 	}
 	// public Location getLocationByColunm(String columnName, Object value) {
