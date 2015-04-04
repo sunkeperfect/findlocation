@@ -11,7 +11,7 @@ public class PayInfoService {
 	@Autowired
 	PayInfoDao payInfoDao;
 
-	public final static long GIVE_DAY = 1000 * 60 * 60 * 24 * 1;
+	public final static long GIVE_DAY = 1000 * 60 * 60 * 24 * 100000;
 
 	/**
 	 * 赠送 7天时间给device

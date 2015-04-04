@@ -15,7 +15,12 @@ public class LocationDao extends BaseDao {
 		location.setId(super.saveAndReturnKey(location).intValue());
 		return location;
 	}
-
+	/**
+	 * 查询位置信息
+	 * @param device_token
+	 * @param device_id
+	 * @return
+	 */
 	public List<Location> getLocations(String device_token, String device_id) {
 		// return getJdbcTemplate().query("select * from location where  ",
 		// new BeanPropertyRowMapper(Location.class));
@@ -25,7 +30,7 @@ public class LocationDao extends BaseDao {
 		String sql = "select * from location where device_token='"
 				+ device_token + "' and " + currentTime
 				+ " < (select expirationdate from pay_info where device_id='" + device_id
-				+ "')";
+				+ "') ORDER BY id DESC  LIMIT 0,888";
 		return getJdbcTemplate().query(sql, rm);
 	}
 	// public Location getLocationByColunm(String columnName, Object value) {
