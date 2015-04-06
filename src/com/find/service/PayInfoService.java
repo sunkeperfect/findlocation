@@ -10,9 +10,10 @@ import com.find.model.PayInfo;
 public class PayInfoService {
 	@Autowired
 	PayInfoDao payInfoDao;
-
-	public final static long GIVE_DAY = 1000 * 60 * 60 * 24 * 100000;
-
+	/**
+	 * 免费30天
+	 */
+	public final static long GIVE_DAY = 1000L * 60L * 60L * 24L * 30L;
 	/**
 	 * 赠送1天时间给device
 	 * 
@@ -38,10 +39,10 @@ public class PayInfoService {
 
 	public PayInfo getPayInfo(String device_id) {
 		PayInfo payInfo = payInfoDao.getPayInfoBydeviceId(device_id);
+		/**
+		 * 免费模式关键
+		 */
 		if (payInfo == null) {
-			/**
-			 * 首次使用 添加
-			 */
 			payInfo = new PayInfo();
 			payInfo.setDeviceId(device_id);
 			giveDateAdd(payInfo);

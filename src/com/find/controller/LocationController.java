@@ -59,7 +59,7 @@ public class LocationController {
 		result.setStatus(500);
 		List<Location> list = locationService.getLocations(device_token,
 				device_id);
-		System.out.println("list:"+list.toString());
+		//System.out.println("list:"+list.toString());
 		try {
 			result.setMsg("获取数据成功！");
 			result.setStatus(200);

@@ -31,7 +31,7 @@ public class LocationDao extends BaseDao {
 				+ device_token + "' and " + currentTime
 
 				+ " < (select expirationdate from pay_info where device_id='" + device_id
-				+ "') ORDER BY id DESC  LIMIT 0,888";
+				+ "') ORDER BY id DESC  LIMIT 0,300";
 
 		System.out.println("execute getLocations sql:" + sql);
 
